@@ -1,3 +1,6 @@
+import 'package:mask_info/domain/model/permission.dart';
+import 'package:mask_info/domain/repository/location_permission_repository.dart';
+
 import '../domain/model/location.dart';
 import '../domain/model/store.dart';
 import '../domain/repository/location_repository.dart';
@@ -56,5 +59,29 @@ class MockLocationRepository implements LocationRepository {
   @override
   Future<Location> getLocation() async {
     return Location(37.5177, 126.8864);
+  }
+
+  @override
+  double distanceBetween(
+      double startLat, double startLng, double endLat, double endLng) {
+    return 0.0;
+  }
+}
+
+class MockLocationPermissionRepositoryImpl
+    implements LocationPermissionRepository {
+  @override
+  Future<Permission> checkPermission() async {
+    return Permission.always;
+  }
+
+  @override
+  Future<bool> isLocationServiceEnabled() async {
+    return true;
+  }
+
+  @override
+  Future<Permission> requestPermission() async {
+    return Permission.always;
   }
 }

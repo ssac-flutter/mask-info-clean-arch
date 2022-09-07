@@ -14,4 +14,10 @@ class LocationRepositoryImpl implements LocationRepository {
 
     return Location(position.latitude, position.longitude);
   }
+
+  @override
+  double distanceBetween(
+      double startLat, double startLng, double endLat, double endLng) {
+    return Geolocator.distanceBetween(startLat, startLng, endLat, endLng);
+  }
 }

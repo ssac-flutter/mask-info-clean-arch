@@ -11,6 +11,7 @@ void main() {
     final useCase = GetNearByStoresUseCase(
       MockStoreRepository(),
       MockLocationRepository(),
+      MockLocationPermissionRepositoryImpl(),
     );
     viewModel = MainViewModel(useCase);
 
@@ -35,6 +36,7 @@ void main() {
     final useCase = GetNearByStoresUseCase(
       MockStoreRepository(),
       MockLocationRepository(),
+      MockLocationPermissionRepositoryImpl(),
     );
     viewModel = MainViewModel(useCase);
 

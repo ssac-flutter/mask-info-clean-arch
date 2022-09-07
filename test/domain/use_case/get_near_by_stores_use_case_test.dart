@@ -6,6 +6,7 @@ void main() {
   final useCase = GetNearByStoresUseCase(
     MockNearbyStoreRepository(),
     MockLocationRepository(),
+    MockLocationPermissionRepositoryImpl(),
   );
 
   test('가까운 순서대로 오름차순 정렬되어야 한다', () async {
