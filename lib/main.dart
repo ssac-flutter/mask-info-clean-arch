@@ -1,33 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:mask_info/domain/use_case/get_near_by_stores_use_case.dart';
 import 'package:mask_info/generated/presentation/main_screen.dart';
 import 'package:mask_info/presentation/main_view_model.dart';
 import 'package:provider/provider.dart';
 
-import 'domain/model/store.dart';
-import 'domain/repository/store_repository.dart';
-
-class MockStoreRepository implements StoreRepository {
-  @override
-  Future<List<Store>> getStores() async {
-    await Future.delayed(Duration(seconds: 2));
-    return List.generate(
-        222,
-        (index) => Store(
-              address: 'address',
-              lat: 3.3,
-              lng: 4,
-              name: '승약국',
-              remainStatus: 'remainStatus',
-            ));
-  }
-}
+import 'data/mock_data.dart';
+import 'data/repository/location_repository_impl.dart';
 
 void main() {
+  final useCase = GetNearByStoresUseCase(
+    MockNearbyStoreRepository(),
+    LocationRepositoryImpl(),
+  );
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(
-            create: (_) => MainViewModel(MockStoreRepository())),
+            create: (_) => MainViewModel(useCase)),
       ],
       child: const MyApp(),
     ),

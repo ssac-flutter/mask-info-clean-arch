@@ -12,6 +12,7 @@ class Store with _$Store {
     required num lng,
     required String name,
     required String remainStatus,
+    double? distance,
   }) = _Store;
 
   factory Store.fromJson(Map<String, Object?> json) => _$StoreFromJson(json);

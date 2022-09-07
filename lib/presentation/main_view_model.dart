@@ -1,28 +1,26 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/material.dart';
-import 'package:mask_info/domain/repository/store_repository.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 import '../domain/model/store.dart';
+import '../domain/use_case/get_near_by_stores_use_case.dart';
 
 part '../generated/presentation/main_view_model.freezed.dart';
-
 part '../generated/presentation/main_view_model.g.dart';
 
 class MainViewModel with ChangeNotifier {
-  final StoreRepository _repository;
+  final GetNearByStoresUseCase _getNearByStoresUseCase;
 
   MainState _state = const MainState();
 
   MainState get state => _state;
 
-  MainViewModel(this._repository) {
-    getStores();
-  }
+  MainViewModel(this._getNearByStoresUseCase);
 
   void getStores() async {
     _state = state.copyWith(isLoading: true);
     notifyListeners();
 
-    final stores = await _repository.getStores();
+    final stores = await _getNearByStoresUseCase();
     _state = state.copyWith(
       stores: stores,
       isLoading: false,

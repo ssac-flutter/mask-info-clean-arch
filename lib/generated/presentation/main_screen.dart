@@ -2,8 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:mask_info/presentation/main_view_model.dart';
 import 'package:provider/provider.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  @override
+  void initState() {
+    super.initState();
+
+    Future.microtask(() => context.read<MainViewModel>().getStores());
+  }
 
   @override
   Widget build(BuildContext context) {
