@@ -34,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
                 final store = state.stores[index];
                 return ListTile(
                   title: Text(store.name),
-                  subtitle: Text(store.address),
+                  subtitle: Text('${store.address} ${store.distance}'),
                 );
               }),
     );

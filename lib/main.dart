@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:mask_info/data/repository/location_permission_repository_impl.dart';
+import 'package:mask_info/data/repository/store_repository_impl.dart';
 import 'package:mask_info/domain/use_case/get_near_by_stores_use_case.dart';
-import 'package:mask_info/generated/presentation/main_screen.dart';
+import 'package:mask_info/presentation/main_screen.dart';
 import 'package:mask_info/presentation/main_view_model.dart';
 import 'package:provider/provider.dart';
 
-import 'data/mock_data.dart';
 import 'data/repository/location_repository_impl.dart';
 
 void main() {
   final useCase = GetNearByStoresUseCase(
-    MockNearbyStoreRepository(),
+    StoreRepositoryImpl(),
     LocationRepositoryImpl(),
     LocationPermissionRepositoryImpl(),
   );
