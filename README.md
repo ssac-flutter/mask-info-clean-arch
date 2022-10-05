@@ -1,6 +1,6 @@
 # mask_info
 
-A new Flutter project.
+마스크 정보 앱
 
 ## Getting Started
 
